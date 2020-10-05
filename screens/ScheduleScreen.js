@@ -4,7 +4,7 @@ import Banner from "../components/Banner";
 import CourseList from "../components/CourseList";
 import CourseEditScreen from "./CourseEditScreen";
 import UserContext from "../UserContext";
-import { firebase } from "../firebase";
+import { firebase } from "../utils/firebase";
 
 const schedule = {
   title: "CS Courses for 2018-2019",
