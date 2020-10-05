@@ -1,10 +1,6 @@
 import React from "react";
 import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
-
-const termMap = { F: "Fall", W: "Winter", S: "Spring" };
-const terms = Object.values(termMap);
-
-const getCourseTerm = (course) => termMap[course.id.charAt(0)];
+import { terms } from "../utils/course";
 
 const TermButton = ({ term, setSelectedTerm, isActive }) => (
   <TouchableOpacity
