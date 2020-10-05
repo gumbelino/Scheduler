@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { StyleSheet, SafeAreaView } from "react-native";
 import Banner from "../components/Banner";
 import CourseList from "../components/CourseList";
+import CourseEditScreen from "./CourseEditScreen";
+import UserContext from "../UserContext";
 
 const schedule = {
   title: "CS Courses for 2018-2019",
@@ -32,8 +34,13 @@ const schedule = {
 const ScheduleScreen = ({ navigation }) => {
   const [schedule, setSchedule] = useState({ title: "", courses: [] });
 
+  const user = useContext(UserContext);
+  const canEdit = user && user.role === "admin";
+
   const view = (course) => {
-    navigation.navigate("CourseDetailScreen", { course });
+    navigation.navigate(canEdit ? "CourseEditScreen" : "CourseDetailScreen", {
+      course,
+    });
   };
 
   const url = "https://courses.cs.northwestern.edu/394/data/cs-courses.php";
